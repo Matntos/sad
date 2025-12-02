@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Prime | Financial Intermediation Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           1. CSS VARIABLES & RESET
+           ========================================= */
+        :root {
+            --primary-blue: #0B2545; /* Deep Royal Blue */
+            --accent-gold: #C5A059; /* Metallic Gold */
+            --bg-light: #F4F6F9; /* Financial Grey */
+            --bg-white: #FFFFFF;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+            
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Lato', sans-serif;
+            
+            --container-width: 1200px;
+            --section-padding: 100px 0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        /* =========================================
+           2. UTILITIES
+           ========================================= */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        .text-center { text-align: center; }
+
+        .section-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            display: block;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background-color: var(--primary-blue);
+            color: var(--bg-white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary-blue);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary-blue);
+        }
+
+        .btn-gold {
+            background-color: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .btn-gold:hover {
+            background-color: transparent;
+            color: var(--accent-gold);
+        }
+
+        /* =========================================
+           3. HEADER
+           ========================================= */
+        header {
+            background-color: var(--primary-blue);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--bg-white);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* =========================================
+           4. HERO SECTION
+           ========================================= */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(11, 37, 69, 0.85), rgba(11, 37, 69, 0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--bg-white);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            color: var(--bg-white);
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            color: #E2E8F0;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* =========================================
+           5. ABOUT US
+           ========================================= */
+        .about {
+            padding: var(--section-padding);
+            background-color: var(--bg-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            border-radius: 4px;
+            box-shadow: 20px 20px 0 var(--bg-light);
+            border: 1px solid var(--accent-gold);
+        }
+
+        /* =========================================
+           6. SERVICES
+           ========================================= */
+        .services {
+            padding: var(--section-padding);
+            background-color: var(--bg-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            padding: 50px 40px;
+            border-top: 4px solid var(--primary-blue);
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-top-color: var(--accent-gold);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        /* =========================================
+           7. ADVANTAGES
+           ========================================= */
+        .advantages {
+            padding: var(--section-padding);
+            background-color: var(--primary-blue);
+            color: var(--bg-white);
+        }
+
+        .advantages .section-subtitle {
+            color: var(--accent-gold);
+        }
+
+        .advantages h2 {
+            color: var(--bg-white);
+        }
+
+        .advantages p {
+            color: #cbd5e1;
+        }
+
+        .adv-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .adv-item {
+            text-align: left;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-left: 2px solid var(--accent-gold);
+        }
+
+        .adv-item h4 {
+            color: var(--accent-gold);
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* =========================================
+           8. PROCESS
+           ========================================= */
+        .process {
+            padding: var(--section-padding);
+            background-color: var(--bg-white);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .step-num {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            color: rgba(11, 37, 69, 0.1);
+            font-weight: 700;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .step-content {
+            position: relative;
+            z-index: 1;
+            padding-top: 20px;
+        }
+
+        /* =========================================
+           9. CONTACT
+           ========================================= */
+        .contact {
+            padding: var(--section-padding);
+            background-color: var(--bg-light);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            background: var(--bg-white);
+            padding: 60px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+        }
+
+        .contact-info {
+            padding-right: 40px;
+            border-right: 1px solid #eee;
+        }
+
+        .info-item {
+            margin-bottom: 30px;
+        }
+
+        .info-item h5 {
+            color: var(--accent-gold);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .info-item p {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary-blue);
+            background: #fff;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* =========================================
+           10. FOOTER
+           ========================================= */
+        footer {
+            background-color: var(--primary-blue);
+            color: rgba(255,255,255,0.7);
+            padding: 60px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2.8rem; }
+            .about-grid, .contact-container { grid-template-columns: 1fr; }
+            .adv-grid, .process-steps { flex-direction: column; }
+            .contact-info { border-right: none; border-bottom: 1px solid #eee; padding-right: 0; padding-bottom: 40px; margin-bottom: 40px; }
+            .nav-wrapper { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">GLOBAL <span>PRIME</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#about">The Firm</a></li>
+                    <li><a href="#services">Solutions</a></li>
+                    <li><a href="#advantages">Why Global</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Empowering Your Financial Future in Sao Paulo</h1>
+            <p>Global Finance Prime offers strategic credit intermediation and bespoke financial solutions. We bridge the gap between capital and opportunity.</p>
+            <a href="#contact" class="btn btn-gold">Request Consultation</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container about-grid">
+            <div class="about-text">
+                <span class="section-subtitle">Our Profile</span>
+                <h2 class="section-title">Integrity in Intermediation</h2>
+                <p>GLOBAL FINANCE PRIME LTDA is a specialized financial services firm located in Sao Jose dos Campos, Sao Paulo. Led by Ederson Lacerda Alves, we operate with a singular focus: to provide transparent, secure, and efficient credit intermediation.</p>
+                <p>We understand that navigating the financial landscape in Brazil can be complex. As licensed intermediaries, we act as the vital link between individuals or businesses seeking capital and the major banking institutions that provide it.</p>
+                <p>Our firm is built on the pillars of "Finance and Insurance" expertise. Whether you require check clearing services or complex loan structuring, Global Prime delivers solutions that align with your long-term fiscal goals.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Financial Meeting in Sao Paulo">
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Our Expertise</span>
+                <h2 class="section-title">Financial Solutions</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">&#128179;</div> <h3>Credit Intermediation</h3>
+                    <p>We connect clients with the right financial products. From personal loans to corporate financing, we analyze your profile and negotiate terms with lenders to secure the best possible rates and conditions.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">&#128200;</div> <h3>Asset & Risk Strategy</h3>
+                    <p>Financial health requires planning. We provide strategic advice on asset management and insurance related activities, ensuring your portfolio is protected against market volatility.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">&#9989;</div> <h3>Clearing Services</h3>
+                    <p>Efficiency in transactions is paramount. We offer specialized check clearing and settlement services, ensuring your funds are processed securely and available when you need them.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="advantages" class="advantages">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">The Global Prime Standard</span>
+                <h2 class="section-title">Why Partner With Us</h2>
+            </div>
+
+            <div class="adv-grid">
+                <div class="adv-item">
+                    <h4>Local Expertise</h4>
+                    <p>Based in Sao Jose dos Campos, we have a deep understanding of the Sao Paulo financial market and regulatory environment, giving you a home-field advantage.</p>
+                </div>
+                <div class="adv-item">
+                    <h4>Global Standards</h4>
+                    <p>True to our name, we apply international standards of compliance and due diligence to every transaction, ensuring your operations are secure and globally recognized.</p>
+                </div>
+                <div class="adv-item">
+                    <h4>Prime Service</h4>
+                    <p>We believe in personalized banking relationships. You are not just a number; you are a partner. We tailor every solution to fit your specific financial narrative.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Our Workflow</span>
+                <h2 class="section-title">The Path to Funding</h2>
+            </div>
+
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <div class="step-content">
+                        <h3>Analysis</h3>
+                        <p>We review your financial standing, credit history, and specific capital requirements to establish a baseline.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">02</div>
+                    <div class="step-content">
+                        <h3>Strategy</h3>
+                        <p>We identify the best financial institutions and products that match your profile, structuring the application for success.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">03</div>
+                    <div class="step-content">
+                        <h3>Execution</h3>
+                        <p>We handle the paperwork, negotiation, and final clearing, ensuring the funds or services are delivered promptly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-subtitle">Get in Touch</span>
+                <h2 class="section-title">Secure Your Financial Future</h2>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <h5>Headquarters</h5>
+                        <p>SAO JOSE DOS CAMPOS, SAO PAULO<br>Brazil</p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <h5>Electronic Mail</h5>
+                        <p>info@globalfinanceprime.info</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h5>Key Principal</h5>
+                        <p>Ederson Lacerda Alves</p>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Email Address" required>
+                        <select>
+                            <option value="" disabled selected>Service of Interest</option>
+                            <option value="Credit Intermediation">Credit Intermediation</option>
+                            <option value="Clearing Services">Check Clearing Services</option>
+                            <option value="Other">Other Financial Inquiry</option>
+                        </select>
+                        <textarea placeholder="How can we assist you?"></textarea>
+                        <button type="submit" class="btn">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 GLOBAL FINANCE PRIME LTDA. All Rights Reserved.</p>
+            <p style="font-size: 0.8rem; margin-top: 10px; color: rgba(255,255,255,0.6);">Activities Related to Credit Intermediation | Finance and Insurance</p>
+        </div>
+    </footer>
+
+</body>
+</html>
